@@ -17,8 +17,8 @@ public class tablero {
     public final int CELL_WATER = 1;
     public final int CELL_HIT = 2;
     private final int[][] tablero;
-    private final int sizeX;
-    private final int sizeY;
+    public final int sizeX;
+    public final int sizeY;
 
     public tablero(int sizeX, int sizeY) {
         this.sizeX = sizeX;
