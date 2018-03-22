@@ -29,17 +29,15 @@ public class tablero {
     }
 
     public boolean canShoot(int x, int y) {
-        if (x > 0 && y > 0) {
+        if (x >= 0 && y >= 0) {
             if (x < sizeX && y < sizeY) {
-                if (tablero[x][y] == this.CELL_NULL) {
-                    return true;
-                }
+                return tablero[x][y] == this.CELL_NULL;
             }
         }
         return false;
     }
     public boolean canShoot(Coordenada coor) {
-        canShoot(coor.getPosX(),coor.getPosY());
+        return canShoot(coor.getPosX(),coor.getPosY());
     }
     public void updateCell(int x, int y, int state){
         tablero[x][y] = state;
