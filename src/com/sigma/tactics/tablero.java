@@ -39,4 +39,8 @@ public class tablero {
     public void updateCell(int x, int y, int state){
         tablero[x][y] = state;
     }
+
+    public int[][] getTablero() {
+        return tablero;
+    }
 }
