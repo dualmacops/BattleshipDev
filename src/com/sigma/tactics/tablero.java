@@ -5,6 +5,8 @@
 package com.sigma.tactics;
 
 import com.sigma.battleship.Barco;
+import com.sigma.battleship.Coordenada;
+
 import java.util.List;
 
 /**
@@ -35,6 +37,9 @@ public class tablero {
             }
         }
         return false;
+    }
+    public boolean canShoot(Coordenada coor) {
+        canShoot(coor.getPosX(),coor.getPosY());
     }
     public void updateCell(int x, int y, int state){
         tablero[x][y] = state;
