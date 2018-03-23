@@ -44,19 +44,15 @@ public class MyTactic implements ITactica {
 
    
         for (int i = 0; i < numb2; i++) {
-    
             obtenercoorbar(2);
         }
         for (int i = 0; i < numb3; i++) {
-    
             obtenercoorbar(3);
         }
         for (int i = 0; i < numb4; i++) {
-     
               obtenercoorbar(4);
         }
         for (int i = 0; i < numb5; i++) {
-  
               obtenercoorbar(5);
         }
         return barcos;
