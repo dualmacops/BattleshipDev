@@ -29,7 +29,7 @@ public class MyTactic implements ITactica {
     @Override
     public List<Barco> generarBarcos() {
         
-   //     ArrayList<Barco> barcos=new ArrayList<Barco>();
+  
          for (int i = 0; i < tablero.sizeX; i++) {
             for (int e = 0; e < tablero.sizeY; e++) {
                 tabcolbar[i][e]=0;
@@ -42,40 +42,37 @@ public class MyTactic implements ITactica {
         int numb4 = this.datosRonda.getBarcos4pos();
         int numb5 = this.datosRonda.getBarcos5pos();
 
-
+   
         for (int i = 0; i < numb2; i++) {
-      //      barcos.add(obtenercoorbar(2));
+    
             obtenercoorbar(2);
         }
         for (int i = 0; i < numb3; i++) {
-     //       barcos.add(obtenercoorbar(3));
+    
             obtenercoorbar(3);
         }
         for (int i = 0; i < numb4; i++) {
-     //       barcos.add(obtenercoorbar(4));
+     
               obtenercoorbar(4);
         }
         for (int i = 0; i < numb5; i++) {
-     //       barcos.add(obtenercoorbar(5));
+  
               obtenercoorbar(5);
         }
-       
-        
         return barcos;
     }
 
 
 
     public void obtenercoorbar(int tb) {
-        try{
+     try{
       
        boolean bien=true;
         int x = tablero.sizeX;
         int y = tablero.sizeY;
-        int posx = (int) (Math.random() * x);
-        int posy = (int) (Math.random() * y);
+        int posx = (int) (Math.random() * x-2);
+        int posy = (int) (Math.random() * y-2);
         int direccion = (int) (Math.random() * 2);
- //   System.out.println("-------------------"+direccion);
         int posxfin = posx, posyfin = posy;
 
         //vertical
@@ -84,70 +81,59 @@ public class MyTactic implements ITactica {
                 for (int e = 0; e < tb; e++) {
                     if (tabcolbar[posx + e][posy] == 0) {
                         posxfin = posx + e;
-                   //     System.out.println("------1");
                     } 
                     else{
-                    //    System.out.println("1");
-                        obtenercoorbar(tb);
                         bien=false;
                     }
                    
                 }
-             //   System.out.println("------2");
             } else {
-           //     System.out.println("2");
-                obtenercoorbar(tb);
                 bien=false;
             }
-            if(bien!=false){
-                for (int e = 0; e < tb; e++) {
-                tabcolbar[posx + e][posy] = 1;
-
-                }
-            }
+          
            
-        } //orizontal
+        } 
+        //orizontal
         else if (direccion == 1) {
             if (tabcolbar[posx][posy] == 0) {
                 for (int e = 0; e < tb; e++) {
                     if (tabcolbar[posx][posy + e] == 0) {
                         posyfin = posy + e;
-               //             System.out.println("------3");
                     }
                     else{
-               //         System.out.println("3------");
-                        obtenercoorbar(tb);
                         bien=false;
                     }
 
                 }
-            //    System.out.println("------4"); 
             }
             else {
-          //      System.out.println("4---------");
-                obtenercoorbar(tb);
                 bien=false;
             }
-            if(bien!=false){
+            
+        }
+        if(bien!=false){
+            
+            
+            if(direccion == 1){ 
                 for (int e = 0; e < tb; e++) {
                     tabcolbar[posx][posy + e] = 1;
 
                 }
             }
-        }
-        if(bien!=false){
-            System.out.println("x:"+posx + " " + posxfin +"  y: "+ posy + " "+ posyfin);      
+            else{
+                for (int e = 0; e < tb; e++) {
+                tabcolbar[posx + e][posy] = 1;
+                }
+            }
             barcos.add(new Barco(new Coordenada(posx, posy), new Coordenada(posxfin, posyfin)));
         }
- 
+        else obtenercoorbar(tb);
          
         }catch(Exception ex){
         obtenercoorbar(tb);
-        
         }
        
     }
-
     public class tablero {
 
         public final int CELL_NULL = 0;
